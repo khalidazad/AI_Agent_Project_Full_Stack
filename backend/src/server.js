@@ -5,7 +5,9 @@ import { agent } from "./agent/helpdeskAgent.js";
 import path from "path";
 import { fileURLToPath } from "url";
 
-dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
 
 const app = express();   // ✅ create app first
 

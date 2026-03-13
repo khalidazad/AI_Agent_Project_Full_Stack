@@ -27,7 +27,16 @@ export default function ChatWindow() {
  };
 
  return (
-  <div style={{ width: "600px", margin: "auto" }}>
+  <div
+   style={{
+    width: "600px",
+    minHeight: "100vh",
+    margin: "0 auto",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+   }}
+  >
 
    <div
     style={{
