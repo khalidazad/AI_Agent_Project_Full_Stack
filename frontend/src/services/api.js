@@ -10,5 +10,5 @@ const res = await fetch(`${API_URL}/chat`,{
  body:JSON.stringify({message}) ,
 });
 
- return res.json();
+return res.json();
 }
