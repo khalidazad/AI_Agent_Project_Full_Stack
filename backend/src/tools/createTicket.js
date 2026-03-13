@@ -1,11 +1,13 @@
-import { pool } from "../database/postgres.js";
+import { PrismaClient } from "@prisma/client";
 
-export async function createTicket(issue){
+const prisma = new PrismaClient();
 
- const result = await pool.query(
-  "INSERT INTO tickets(issue) VALUES($1) RETURNING *",
-  [issue]
- );
+export async function createTicket(issue) {
 
- return result.rows[0];
+  const ticket = await prisma.ticket.create({
+    data: { issue }
+  });
+
+  return ticket;
+
 }

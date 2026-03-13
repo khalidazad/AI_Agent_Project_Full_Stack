@@ -1,11 +1,13 @@
-import { pool } from "../database/postgres.js";
+import { PrismaClient } from "@prisma/client";
 
-export async function deleteTicket(id){
+const prisma = new PrismaClient();
 
- await pool.query(
-  "DELETE FROM tickets WHERE id=$1",
-  [id]
- );
+export async function deleteTicket(id) {
 
- return `Ticket ${id} deleted`;
+  await prisma.ticket.delete({
+    where: { id: Number(id) }
+  });
+
+  return "Ticket deleted";
+
 }

@@ -1,10 +1,11 @@
-import { pool } from "../database/postgres.js";
+import { PrismaClient } from "@prisma/client";
 
-export async function listTickets(){
+const prisma = new PrismaClient();
 
- const result = await pool.query(
-  "SELECT * FROM tickets ORDER BY id DESC"
- );
+export async function listTickets() {
 
- return result.rows;
+  return await prisma.ticket.findMany({
+    orderBy: { createdAt: "desc" }
+  });
+
 }
