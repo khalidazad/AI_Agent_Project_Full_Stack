@@ -7,7 +7,7 @@ const res = await fetch(`${API_URL}/chat`,{
  headers:{
   "Content-Type":"application/json"
  },
- body:JSON.stringify({message}),
+ body:JSON.stringify({message}) ,
 });
 
  return res.json();
