@@ -17,7 +17,6 @@ const __dirname = path.dirname(__filename);
 
 /* API */
 app.post("/chat", async (req, res) => {
-
   try {
 
     const message = req.body?.message;
@@ -30,15 +29,19 @@ app.post("/chat", async (req, res) => {
       messages: [{ role: "user", content: message }]
     });
 
+    console.log("Agent response:", response);
+
     res.json(response);
 
   } catch (error) {
 
-    console.error(error);
-    res.status(500).json({ error: "Agent error" });
+    console.error("Agent error:", error);
+
+    res.status(500).json({
+      error: "Agent error"
+    });
 
   }
-
 });
 
 /* FRONTEND */
